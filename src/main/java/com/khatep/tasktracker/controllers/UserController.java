@@ -3,6 +3,8 @@ package com.khatep.tasktracker.controllers;
 import com.khatep.tasktracker.models.User;
 import com.khatep.tasktracker.models.dto.UserDto;
 import com.khatep.tasktracker.services.UserService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -19,9 +21,9 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public List<User> getUsers() {
+    public ResponseEntity<String> getUsers(@PathVariable Long id) {
         // plug
-        return new ArrayList<>();
+        return new ResponseEntity<>("id" + id, HttpStatus.OK);
     }
 
     @PostMapping

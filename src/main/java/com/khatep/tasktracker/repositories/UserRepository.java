@@ -8,8 +8,6 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
-    @Query("SELECT name FROM users")
+    @Query("SELECT u FROM User u")
     public List<User> findAllUsers();
-
-
 }
