@@ -1,6 +1,8 @@
 package com.khatep.tasktracker.controllers;
 
+import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
 import com.khatep.tasktracker.models.dto.responses.UserResponseDto;
+import com.khatep.tasktracker.services.TaskService;
 import com.khatep.tasktracker.services.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -10,16 +12,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Slf4j
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
+    private final TaskService taskService;
 
     @GetMapping("/{id}")
     public ResponseEntity<UserResponseDto> findUser(@PathVariable Long id) {
         UserResponseDto userResponseDto = userService.findUser(id);
-        return ResponseEntity.ok(userResponseDto);
+        return ResponseEntity
+                .ok(userResponseDto);
+    }
+    @GetMapping("/{id}/tasks")
+    public ResponseEntity<List<TaskResponseDto>> getTasks(@PathVariable Long userId) {
+        return ResponseEntity
+                .ok(taskService.findTasks(userId));
     }
 }
