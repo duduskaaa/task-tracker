@@ -4,12 +4,12 @@ import com.khatep.tasktracker.exceptions.exceptions.business.EmailIsAlreadyExist
 import com.khatep.tasktracker.exceptions.exceptions.business.EmailIsNotFound;
 import com.khatep.tasktracker.exceptions.exceptions.business.IncorrectPasswordException;
 import com.khatep.tasktracker.exceptions.exceptions.business.UserNotFoundException;
-import com.khatep.tasktracker.services.encrypts.EncryptService;
-import com.khatep.tasktracker.models.entities.User;
+import com.khatep.tasktracker.mappers.UserMapper;
 import com.khatep.tasktracker.models.dto.requests.UserRequestDto;
 import com.khatep.tasktracker.models.dto.responses.UserResponseDto;
+import com.khatep.tasktracker.models.entities.User;
 import com.khatep.tasktracker.repositories.UserRepository;
-import com.khatep.tasktracker.mappers.UserMapper;
+import com.khatep.tasktracker.services.encrypts.EncryptService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UserService {
+public class UserServiceImpl {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
     private final EncryptService encryptService;
