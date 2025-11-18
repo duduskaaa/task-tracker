@@ -1,10 +1,9 @@
 package com.khatep.tasktracker.controllers;
 
+import com.khatep.tasktracker.models.dto.requests.ChangeTaskStatusDto;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
-import com.khatep.tasktracker.models.enums.TaskStatus;
 import com.khatep.tasktracker.services.TaskService;
-import com.khatep.tasktracker.services.impl.TaskServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,7 @@ public class TaskController {
     }
 
     @PatchMapping("{id}/change-status")
-    public void changeTaskStatus(@PathVariable Long id, TaskStatus status) {
-        taskService.updateTaskStatus(id, status);
+    public void changeTaskStatus(@PathVariable Long id, @RequestBody ChangeTaskStatusDto dto) {
+        taskService.updateTaskStatus(id, dto);
     }
 }
