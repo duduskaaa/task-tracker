@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 public class TaskResponseDto {
     private String title;
-    private UserResponseDto user;
     private TaskPriority priority;
     private TaskStatus status;
 }

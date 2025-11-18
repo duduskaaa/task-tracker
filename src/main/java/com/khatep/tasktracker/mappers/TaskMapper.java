@@ -25,7 +25,6 @@ public class TaskMapper {
     public TaskResponseDto toDto(Task task) {
         TaskResponseDto taskResponseDto = new TaskResponseDto();
         taskResponseDto.setTitle(task.getTitle());
-        taskResponseDto.setUser(userMapper.toDto(task.getUser()));
         taskResponseDto.setPriority(task.getPriority());
         taskResponseDto.setStatus(task.getStatus());
 
