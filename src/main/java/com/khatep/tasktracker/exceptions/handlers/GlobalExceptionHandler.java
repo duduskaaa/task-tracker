@@ -37,4 +37,14 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Map<String, Object>> handleUserNotFoundException(UserNotFoundException ex) {
         return buildErrorResponse(HttpStatus.NOT_FOUND, "User not found", ex.getMessage());
     }
+
+    @ExceptionHandler(IncorrectPasswordException.class)
+    public ResponseEntity<Map<String, Object>> handleIncorrectPasswordException(IncorrectPasswordException ex) {
+        return buildErrorResponse(HttpStatus.BAD_REQUEST, "Incorrect password, try again, bitch", ex.getMessage());
+    }
+
+    @ExceptionHandler(EmailIsNotFound.class)
+    public ResponseEntity<Map<String, Object>> handleEmailIsNotFoundException(EmailIsNotFound ex) {
+        return buildErrorResponse(HttpStatus.NOT_FOUND, "Email is not found", ex.getMessage());
+    }
 }
