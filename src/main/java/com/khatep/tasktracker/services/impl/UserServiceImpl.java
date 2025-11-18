@@ -9,6 +9,7 @@ import com.khatep.tasktracker.models.dto.requests.UserRequestDto;
 import com.khatep.tasktracker.models.dto.responses.UserResponseDto;
 import com.khatep.tasktracker.models.entities.User;
 import com.khatep.tasktracker.repositories.UserRepository;
+import com.khatep.tasktracker.services.UserService;
 import com.khatep.tasktracker.services.encrypts.EncryptService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class UserServiceImpl {
+public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
     private final EncryptService encryptService;

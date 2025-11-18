@@ -2,7 +2,9 @@ package com.khatep.tasktracker.services;
 
 import com.khatep.tasktracker.models.dto.requests.UserRequestDto;
 import com.khatep.tasktracker.models.dto.responses.UserResponseDto;
+import org.springframework.stereotype.Service;
 
+@Service
 public interface UserService {
     void createUser(UserRequestDto userRequestDto);
 
