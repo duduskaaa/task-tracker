@@ -27,7 +27,7 @@ public class TaskController {
     }
 
     @PatchMapping("{id}/change-status")
-    public void changeTaskStatus(@PathVariable Long id, TaskStatus taskStatus) {
-        taskService.updateTaskStatus(id, taskStatus);
+    public void changeTaskStatus(@PathVariable Long id, TaskStatus status) {
+        taskService.updateTaskStatus(id, status);
     }
 }

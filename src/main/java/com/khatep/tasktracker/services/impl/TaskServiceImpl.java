@@ -58,12 +58,12 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional
-    public void updateTaskStatus(Long id, TaskStatus taskStatus) {
+    public void updateTaskStatus(Long id, TaskStatus status) {
         Task task = taskRepository
                 .findById(id)
                 .orElseThrow(() -> new TaskNotFound("Task not found with id: " + id));
 
-        task.setStatus(taskStatus);
+        task.setStatus(status);
         taskRepository.save(task);
     }
 }
