@@ -1,7 +1,8 @@
 package com.khatep.tasktracker.controllers;
 
 import com.khatep.tasktracker.models.dto.responses.UserResponseDto;
-import com.khatep.tasktracker.services.impl.UserService;
+import com.khatep.tasktracker.services.UserService;
+import com.khatep.tasktracker.services.impl.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

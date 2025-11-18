@@ -2,9 +2,8 @@ package com.khatep.tasktracker.controllers;
 
 import com.khatep.tasktracker.models.dto.requests.UserRequestDto;
 import com.khatep.tasktracker.models.dto.responses.UserResponseDto;
-import com.khatep.tasktracker.services.impl.UserService;
+import com.khatep.tasktracker.services.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

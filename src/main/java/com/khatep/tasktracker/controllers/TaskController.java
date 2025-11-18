@@ -3,6 +3,7 @@ package com.khatep.tasktracker.controllers;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
 import com.khatep.tasktracker.models.enums.TaskStatus;
+import com.khatep.tasktracker.services.TaskService;
 import com.khatep.tasktracker.services.impl.TaskServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +14,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/api/tasks")
 public class TaskController {
-    private final TaskServiceImpl taskService;
+    private final TaskService taskService;
 
     @GetMapping("/{userId}")
     public List<TaskResponseDto> getTasks(@PathVariable Long userId) {
