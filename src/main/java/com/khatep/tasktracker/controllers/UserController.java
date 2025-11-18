@@ -1,33 +1,22 @@
 package com.khatep.tasktracker.controllers;
 
-import com.khatep.tasktracker.models.User;
-import com.khatep.tasktracker.models.dto.UserDto;
-import com.khatep.tasktracker.services.UserService;
-import org.springframework.http.HttpStatus;
+import com.khatep.tasktracker.models.dto.responses.UserResponseDto;
+import com.khatep.tasktracker.services.impl.UserService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
+@Slf4j
 @RestController
-@RequestMapping("/api/user")
+@RequiredArgsConstructor
+@RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
-
     @GetMapping("/{id}")
-    public ResponseEntity<String> getUsers(@PathVariable Long id) {
-        // plug
-        return new ResponseEntity<>("id" + id, HttpStatus.OK);
-    }
-
-    @PostMapping
-    public void createUser(@RequestBody UserDto userDto) {
-        userService.saveUser(userDto);
+    public ResponseEntity<UserResponseDto> findUser(@PathVariable Long id) {
+        UserResponseDto userResponseDto = userService.findUser(id);
+        return ResponseEntity.ok(userResponseDto);
     }
 }

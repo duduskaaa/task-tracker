@@ -1,4 +1,4 @@
-package com.khatep.tasktracker.exceptions;
+package com.khatep.tasktracker.exceptions.exceptions.business;
 
 import jakarta.persistence.EntityNotFoundException;
 

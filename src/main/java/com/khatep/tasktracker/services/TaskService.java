@@ -1,4 +1,4 @@
 package com.khatep.tasktracker.services;
 
-public class TaskService {
+public interface TaskService {
 }

@@ -1,23 +1,32 @@
 package com.khatep.tasktracker.controllers;
 
-import com.khatep.tasktracker.models.Task;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
+import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
+import com.khatep.tasktracker.models.enums.TaskStatus;
+import com.khatep.tasktracker.services.impl.TaskServiceImpl;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/task")
+@RequiredArgsConstructor
+@RequestMapping("/api/tasks")
 public class TaskController {
-    @GetMapping("/{id}/details")
-    public List<Task> getTasks() {
-        // plug
-        return new ArrayList<>();
+    private final TaskServiceImpl taskService;
+
+    @GetMapping("/{userId}")
+    public List<TaskResponseDto> getTasks(@PathVariable Long userId) {
+        return taskService.findTasks(userId);
     }
 
-    @PostMapping
-    public void createTask() {}
+    @PostMapping("/create")
+    public void createTask(@RequestBody TaskRequestDto taskRequestDto) {
+        taskService.createTask(taskRequestDto);
+    }
+
+    @PatchMapping("{id}/change-status")
+    public void changeTaskStatus(@PathVariable Long id, TaskStatus taskStatus) {
+        taskService.updateTaskStatus(id, taskStatus);
+    }
 }
