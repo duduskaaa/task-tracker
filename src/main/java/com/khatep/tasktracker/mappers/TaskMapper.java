@@ -12,8 +12,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 //TODO: Использовать Jackson для маппинга ENUM значений
 public class TaskMapper {
-    private final UserMapper userMapper;
-
     public Task toEntity(TaskRequestDto taskRequestDto) {
         Task task = new Task();
         task.setTitle(taskRequestDto.getTitle());
