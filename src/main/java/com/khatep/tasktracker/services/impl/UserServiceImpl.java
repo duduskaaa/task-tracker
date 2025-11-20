@@ -6,6 +6,7 @@ import com.khatep.tasktracker.exceptions.exceptions.business.IncorrectPasswordEx
 import com.khatep.tasktracker.exceptions.exceptions.business.UserNotFoundException;
 import com.khatep.tasktracker.mappers.UserMapper;
 import com.khatep.tasktracker.models.dto.requests.UserRequestDto;
+import com.khatep.tasktracker.models.dto.requests.UserUpdateRequestDto;
 import com.khatep.tasktracker.models.dto.responses.UserResponseDto;
 import com.khatep.tasktracker.models.entities.User;
 import com.khatep.tasktracker.repositories.UserRepository;
@@ -18,6 +19,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+//TODO: Add updateName(String n)
 public class UserServiceImpl implements UserService {
     private final UserMapper userMapper;
     private final UserRepository userRepository;
@@ -57,5 +59,14 @@ public class UserServiceImpl implements UserService {
         }
 
         throw new IncorrectPasswordException("Incorrect password");
+    }
+    public void updateName(Long id, UserUpdateRequestDto dto) {
+        User user = userRepository
+                .findById(id)
+                .orElseThrow(() -> new UserNotFoundException("User not found with id: " + id));
+
+        dto.name().ifPresent(user::setName);
+
+        userRepository.save(user);
     }
 }
