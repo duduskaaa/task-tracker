@@ -28,9 +28,4 @@ public class UserController {
         return ResponseEntity
                 .ok(userResponseDto);
     }
-    @GetMapping("/{id}/tasks")
-    public ResponseEntity<List<TaskResponseDto>> getTasks(@PathVariable Long userId) {
-        return ResponseEntity
-                .ok(taskService.findTasks(userId));
-    }
 }

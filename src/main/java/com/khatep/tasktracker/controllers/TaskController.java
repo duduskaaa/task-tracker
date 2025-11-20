@@ -25,6 +25,12 @@ public class TaskController {
                 .build();
     }
 
+    @GetMapping("/{id}/tasks")
+    public ResponseEntity<List<TaskResponseDto>> getTasks(@PathVariable Long userId) {
+        return ResponseEntity
+                .ok(taskService.findTasks(userId));
+    }
+
     @PatchMapping("{id}/change-status")
     public ResponseEntity<Void> changeTaskStatus(@PathVariable Long id, @RequestBody ChangeTaskStatusDto dto) {
         taskService.updateTaskStatus(id, dto);
