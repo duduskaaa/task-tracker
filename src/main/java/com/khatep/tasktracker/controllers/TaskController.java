@@ -1,7 +1,7 @@
 package com.khatep.tasktracker.controllers;
 
-import com.khatep.tasktracker.models.dto.requests.ChangeTaskStatusDto;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
+import com.khatep.tasktracker.models.dto.requests.TaskUpdateRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
 import com.khatep.tasktracker.services.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -32,7 +32,7 @@ public class TaskController {
     }
 
     @PatchMapping("{id}/change-status")
-    public ResponseEntity<Void> changeTaskStatus(@PathVariable Long id, @RequestBody ChangeTaskStatusDto dto) {
+    public ResponseEntity<Void> changeTaskStatus(@PathVariable Long id, @RequestBody TaskUpdateRequestDto dto) {
         taskService.updateTaskStatus(id, dto);
 
         return ResponseEntity
