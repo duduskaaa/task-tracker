@@ -1,8 +1,8 @@
 package com.khatep.tasktracker.mappers;
 
-import com.khatep.tasktracker.models.entities.Task;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
+import com.khatep.tasktracker.models.entities.Task;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
