@@ -3,7 +3,6 @@ package com.khatep.tasktracker.services;
 import com.khatep.tasktracker.models.dto.requests.ChangeTaskStatusDto;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
-import com.khatep.tasktracker.models.enums.TaskStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
