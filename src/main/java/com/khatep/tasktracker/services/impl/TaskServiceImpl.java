@@ -3,6 +3,7 @@ package com.khatep.tasktracker.services.impl;
 import com.khatep.tasktracker.exceptions.exceptions.business.TaskNotFound;
 import com.khatep.tasktracker.exceptions.exceptions.business.UserNotFoundException;
 import com.khatep.tasktracker.mappers.TaskMapper;
+import com.khatep.tasktracker.models.dto.requests.ChangeTaskPriorityDto;
 import com.khatep.tasktracker.models.dto.requests.ChangeTaskStatusDto;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
@@ -66,6 +67,17 @@ public class TaskServiceImpl implements TaskService {
                 .orElseThrow(() -> new TaskNotFound("Task not found with id: " + id));
 
         task.setStatus(dto.getStatus());
+        taskRepository.save(task);
+    }
+
+    @Override
+    @Transactional
+    public void updateTaskPriority(Long id, ChangeTaskPriorityDto dto) {
+        Task task = taskRepository
+                .findById(id)
+                .orElseThrow(() -> new TaskNotFound("Task not found with id: " + id));
+        task.setPriority(dto.getPriority());
+
         taskRepository.save(task);
     }
 

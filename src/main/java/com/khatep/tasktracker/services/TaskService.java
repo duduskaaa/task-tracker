@@ -1,5 +1,6 @@
 package com.khatep.tasktracker.services;
 
+import com.khatep.tasktracker.models.dto.requests.ChangeTaskPriorityDto;
 import com.khatep.tasktracker.models.dto.requests.ChangeTaskStatusDto;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
@@ -16,6 +17,8 @@ public interface TaskService {
     List<TaskResponseDto> findTasks(Long userId);
 
     void updateTaskStatus(Long id, ChangeTaskStatusDto changeTaskStatusDto);
+
+    void updateTaskPriority(Long id, ChangeTaskPriorityDto changeTaskPriorityDto);
 
     void deleteTask(Long id);
 }
