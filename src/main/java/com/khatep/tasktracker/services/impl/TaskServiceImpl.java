@@ -58,7 +58,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional
-    public void updateTaskStatus(Long id, TaskUpdateRequestDto dto) {
+    public void updateStatus(Long id, TaskUpdateRequestDto dto) {
         Task task = taskRepository
                 .findById(id)
                 .orElseThrow(() -> new TaskNotFound("Task not found with id: " + id));
@@ -70,7 +70,7 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional
-    public void updateTaskPriority(Long id, TaskUpdateRequestDto dto) {
+    public void updatePriority(Long id, TaskUpdateRequestDto dto) {
         Task task = taskRepository
                 .findById(id)
                 .orElseThrow(() -> new TaskNotFound("Task not found with id: " + id));
