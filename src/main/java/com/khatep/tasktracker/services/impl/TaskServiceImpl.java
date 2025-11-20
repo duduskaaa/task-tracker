@@ -22,6 +22,7 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
+//TODO: Add deleteTask(Long id) + updatePriority(Priority p) +
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final UserRepository userRepository;
@@ -66,5 +67,14 @@ public class TaskServiceImpl implements TaskService {
 
         task.setStatus(dto.getStatus());
         taskRepository.save(task);
+    }
+
+    @Override
+    public void deleteTask(Long id) {
+        Task task = taskRepository
+                .findById(id)
+                .orElseThrow(() -> new TaskNotFound("Task not found with id:" + id));
+
+        taskRepository.delete(task);
     }
 }

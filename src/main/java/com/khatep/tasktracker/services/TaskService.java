@@ -16,4 +16,6 @@ public interface TaskService {
     List<TaskResponseDto> findTasks(Long userId);
 
     void updateTaskStatus(Long id, ChangeTaskStatusDto changeTaskStatusDto);
+
+    void deleteTask(Long id);
 }
