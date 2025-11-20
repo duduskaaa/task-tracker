@@ -2,16 +2,14 @@ package com.khatep.tasktracker.models.entities;
 
 import com.khatep.tasktracker.models.enums.TaskPriority;
 import com.khatep.tasktracker.models.enums.TaskStatus;
-
-import java.time.LocalDateTime;
-
 import jakarta.persistence.*;
-
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "tasks")
