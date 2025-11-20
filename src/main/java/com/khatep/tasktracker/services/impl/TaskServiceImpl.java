@@ -3,13 +3,11 @@ package com.khatep.tasktracker.services.impl;
 import com.khatep.tasktracker.exceptions.exceptions.business.TaskNotFound;
 import com.khatep.tasktracker.exceptions.exceptions.business.UserNotFoundException;
 import com.khatep.tasktracker.mappers.TaskMapper;
-import com.khatep.tasktracker.models.dto.requests.ChangeTaskPriorityDto;
-import com.khatep.tasktracker.models.dto.requests.ChangeTaskStatusDto;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
+import com.khatep.tasktracker.models.dto.requests.TaskUpdateRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
 import com.khatep.tasktracker.models.entities.Task;
 import com.khatep.tasktracker.models.entities.User;
-import com.khatep.tasktracker.models.enums.TaskStatus;
 import com.khatep.tasktracker.repositories.TaskRepository;
 import com.khatep.tasktracker.repositories.UserRepository;
 import com.khatep.tasktracker.services.TaskService;
@@ -23,7 +21,6 @@ import java.util.List;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-//TODO: Add deleteTask(Long id) + updatePriority(Priority p) +
 public class TaskServiceImpl implements TaskService {
     private final TaskRepository taskRepository;
     private final UserRepository userRepository;
@@ -61,23 +58,24 @@ public class TaskServiceImpl implements TaskService {
 
     @Override
     @Transactional
-    public void updateTaskStatus(Long id, ChangeTaskStatusDto dto) {
+    public void updateTaskStatus(Long id, TaskUpdateRequestDto dto) {
         Task task = taskRepository
                 .findById(id)
                 .orElseThrow(() -> new TaskNotFound("Task not found with id: " + id));
 
-        task.setStatus(dto.getStatus());
+        dto.status().ifPresent(task::setStatus);
+
         taskRepository.save(task);
     }
 
     @Override
     @Transactional
-    public void updateTaskPriority(Long id, ChangeTaskPriorityDto dto) {
+    public void updateTaskPriority(Long id, TaskUpdateRequestDto dto) {
         Task task = taskRepository
                 .findById(id)
                 .orElseThrow(() -> new TaskNotFound("Task not found with id: " + id));
-        task.setPriority(dto.getPriority());
 
+        dto.priority().ifPresent(task::setPriority);
         taskRepository.save(task);
     }
 

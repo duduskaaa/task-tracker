@@ -1,8 +1,7 @@
 package com.khatep.tasktracker.services;
 
-import com.khatep.tasktracker.models.dto.requests.ChangeTaskPriorityDto;
-import com.khatep.tasktracker.models.dto.requests.ChangeTaskStatusDto;
 import com.khatep.tasktracker.models.dto.requests.TaskRequestDto;
+import com.khatep.tasktracker.models.dto.requests.TaskUpdateRequestDto;
 import com.khatep.tasktracker.models.dto.responses.TaskResponseDto;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +15,9 @@ public interface TaskService {
 
     List<TaskResponseDto> findTasks(Long userId);
 
-    void updateTaskStatus(Long id, ChangeTaskStatusDto changeTaskStatusDto);
+    void updateTaskStatus(Long id, TaskUpdateRequestDto taskUpdateRequestDto);
 
-    void updateTaskPriority(Long id, ChangeTaskPriorityDto changeTaskPriorityDto);
+    void updateTaskPriority(Long id, TaskUpdateRequestDto taskUpdateRequestDto);
 
     void deleteTask(Long id);
 }
